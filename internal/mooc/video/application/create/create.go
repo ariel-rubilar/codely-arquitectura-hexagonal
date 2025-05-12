@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/ariel-rubilar/codely-arquitectura-hexagonal/internal/mooc/video"
-	"github.com/ariel-rubilar/codely-arquitectura-hexagonal/kit/event"
+	"github.com/ariel-rubilar/codely-arquitectura-hexagonal/internal/pkg/event"
 )
 
 type VideoCreator interface {

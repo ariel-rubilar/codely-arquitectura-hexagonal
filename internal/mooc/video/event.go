@@ -1,6 +1,6 @@
 package video
 
-import "github.com/ariel-rubilar/codely-arquitectura-hexagonal/kit/event"
+import "github.com/ariel-rubilar/codely-arquitectura-hexagonal/internal/pkg/event"
 
 const (
 	VideoCreatedEventType = event.Type("event.created.video")

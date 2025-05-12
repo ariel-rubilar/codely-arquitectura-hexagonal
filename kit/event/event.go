@@ -1,6 +1,9 @@
 package event
 
-import "context"
+import (
+	"context"
+	"time"
+)
 
 type Type string
 
@@ -8,7 +11,7 @@ type Event interface {
 	ID() string
 	Type() Type
 	AggregateID() string
-	OccurredOn() string
+	OccurredOn() time.Time
 }
 
 type Handler interface {

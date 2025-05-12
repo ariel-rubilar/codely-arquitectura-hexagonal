@@ -1,10 +1,15 @@
 package video
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/ariel-rubilar/codely-arquitectura-hexagonal/kit/event"
+)
 
 type Video struct {
-	id    VideoID
-	title VideoTitle
+	id     VideoID
+	title  VideoTitle
+	events []event.Event
 }
 
 func New(id string, title string) (Video, error) {
@@ -21,6 +26,7 @@ func New(id string, title string) (Video, error) {
 		id:    idValue,
 		title: titleValue,
 	}
+	video.RecordEvents(NewVideoCreatedEvent(idValue.String(), titleValue.String()))
 	return video, nil
 }
 
@@ -30,6 +36,18 @@ func (v Video) ID() VideoID {
 
 func (v Video) Title() VideoTitle {
 	return v.title
+}
+
+func (v Video) PullEvents() []event.Event {
+	events := v.events
+	v.events = []event.Event{}
+	return events
+}
+
+func (v Video) RecordEvents(events ...event.Event) {
+	for _, e := range events {
+		v.events = append(v.events, e)
+	}
 }
 
 func (v Video) String() string {

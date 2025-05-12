@@ -3,7 +3,7 @@ package video
 import "github.com/ariel-rubilar/codely-arquitectura-hexagonal/kit/event"
 
 const (
-	VideoCreatedEventType = "video.created.event"
+	VideoCreatedEventType = event.Type("event.created.video")
 )
 
 type VideoCreatedEvent struct {
@@ -12,7 +12,7 @@ type VideoCreatedEvent struct {
 	event.BaseEvent
 }
 
-func (e VideoCreatedEvent) Type() string {
+func (e VideoCreatedEvent) Type() event.Type {
 	return VideoCreatedEventType
 }
 
